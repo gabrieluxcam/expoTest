@@ -1,13 +1,26 @@
 import { StyleSheet } from 'react-native';
+import RNUxcam from 'react-native-ux-cam';
 
 import EditScreenInfo from '../../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
 
+RNUxcam.optIntoSchematicRecordings(); // Add this line to enable iOS screen recordings
+const configuration = {
+  userAppKey: '2c03jxhvos3e8c9',
+  enableAutomaticScreenNameTagging: false,
+  enableImprovedScreenCapture: true,
+};
+RNUxcam.startWithConfiguration(configuration);
+
 export default function TabOneScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+      <Text style={styles.title}>UXCam working!</Text>
+      <View
+        style={styles.separator}
+        lightColor="#eee"
+        darkColor="rgba(255,255,255,0.1)"
+      />
       <EditScreenInfo path="app/(tabs)/index.tsx" />
     </View>
   );
